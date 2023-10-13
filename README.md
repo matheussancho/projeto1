@@ -28,7 +28,7 @@ Segundo projeto SEL0456
 
 O trabalho consiste nos seguintes aspectos:
 
-Sistema de cadastro, login e logout de usuários, utilizando o framework **Django** e o banco de dados **MySQL**
+Sistema de cadastro, login e logout de usuários, utilizando o framework **Flask** 
 
 - Criar um **Objeto** (ou uma **Classe**) em Python:
     - A Classe em si será para o controle de usuário: 
@@ -39,4 +39,4 @@ Sistema de cadastro, login e logout de usuários, utilizando o framework **Djang
 	- O login do usuário deve conter um password o qual deve ser armazenado como um *hash*, ou seja, não será armazenado o password diretamente no banco de dados, será necessário fazer a conversão deste password para ser armazenado como um *hash* no banco de dados (security); 
 	    - O login deve conter métodos de verificação de senha e verificação das atribuições (Ex.: Admin, Manager, User).
 		
-Estamos construindo uma API de verificação de usuário. 
+Estamos construindo uma API de verificação de usuário e para este exercício vamos usar um array como um banco de dados. 
