@@ -24,9 +24,11 @@ O trabalho consiste em criar:
 
 # Projeto 2
 
-Primeiro projeto SEL0456
+Segundo projeto SEL0456
 
 O trabalho consiste nos seguintes aspectos:
+
+Sistema de cadastro, login e logout de usuários, utilizando o framework **Django** e o banco de dados **MySQL**
 
 - Criar um **Objeto** (ou uma **Classe**) em Python:
     - A Classe em si será para o controle de usuário: 
