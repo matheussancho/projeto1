@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, redirect, url_for, session, f
 import bcrypt
 import re
 
+
 # podemos instalar o Flask e o Bcrypt através dos comandos:
                 # pip install flask
                 # pip install bcrypt
@@ -59,6 +60,7 @@ def add_user():
         return jsonify ({'message': 'User added successfully'}), 200
     return jsonify ({'message': 'Fail to add user'}), 400
    
+
 #@app.route('/admin/login', methods=['POST']) 
 #def login_user():
 #    name = request.form.get('name')
@@ -66,6 +68,7 @@ def add_user():
 #    role = request.form.get('role')
 
 #   return jsonify({'users': user_data})
+
 
 # Rota de login - lembrando que é necessário fazer o cadastro antes
 @app.route('/login', methods=['POST'])
@@ -115,9 +118,6 @@ def update_user():
             return jsonify({'message': 'User updated successfully'}), 200
 
     return jsonify({'message': 'User not found'}), 404
-
-
-
 
 
 
