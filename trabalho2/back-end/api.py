@@ -125,7 +125,7 @@ def update_user():
 #Lembrando que a solicitação feita no POSTMAN deve ser usada os seguintes parâmetros:
     # name: ''
     # new_password: ''
-    #
+    # new_role: ''
 
 #Testado e validado através do POSTMAN ( ferramenta de desenvolvimento de API que permite testar, documentar e colaborar em seus serviços web e APIs. Ele oferece uma interface de usuário fácil de usar para criar, enviar e receber solicitações HTTP, bem como visualizar as respostas das APIs.)
 
