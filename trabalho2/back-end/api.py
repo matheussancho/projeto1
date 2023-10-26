@@ -11,6 +11,10 @@ import re
 app = Flask(__name__)
 users = []  # Lista para armazenar os usuários e suas informações
 
+@app.route('/')
+def index():
+    return render_template('index2.html')
+
 #Criando a classe de usuário com as propriedades username, password e role.
 class User:
     def __init__(self, username, password, role):
@@ -26,11 +30,11 @@ class User:
 
 #Função que verifica se o username é valido, ou seja, se não possui caracteres inválidos
 def is_valid_username(username):
-    regex = r"^[^ ,]+$"
+    regex = r"^[A-Za-z]+$"
     return bool(re.match(regex, username))
 
 #Parseando a classe 'user' em json, ou seja, quando adicionarmos um usuário, após a adição podemos verificar dentro do array (nosso banco de dados)
-@app.route('/user') 
+@app.route('/user', methods=['GET']) 
 def get_users():
     user_data = []
     for user in users:
@@ -58,7 +62,7 @@ def add_user():
         new_user = User(name, hashed_password, role)
         users.append(new_user)
         return jsonify ({'message': 'User added successfully'}), 200
-    return jsonify ({'message': 'Fail to add user'}), 400
+    return jsonify ({'message': 'Fail to add user, name or something gone wrong'}), 400
    
 
 #@app.route('/admin/login', methods=['POST']) 
@@ -100,26 +104,28 @@ def delete_user():
 #Rota para fazer o update de senha ou role, lembrando que o nome cadastrado é inalterável
 @app.route('/user/update', methods=['PUT'])
 def update_user():
-    name = request.form.get('name')  # Nome de usuário a ser atualizado
-    new_password = request.form.get('new_password')  # Nova senha
-    new_role = request.form.get('new_role')  # Novo papel (role)
+    name = request.form.get('name')  
+    new_password = request.form.get('new_password')  
+    new_role = request.form.get('new_role')  
 
-    for user in users:
-        if user.username == name:
-            if new_password:
-                # Atualize a senha se uma nova senha for fornecida
-                hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-                user.password = hashed_password
+    user_to_update = next((user for user in users if user.username == name), None)
 
-            if new_role:
-                # Atualize o papel (role) se um novo papel for fornecido
-                user.role = new_role
+    if user_to_update:
+        if new_password:
+            new_hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            user_to_update.password = new_hashed_password
 
-            return jsonify({'message': 'User updated successfully'}), 200
+        if new_role:
+            user_to_update.role = new_role
+
+        return jsonify({'message': 'User updated successfully'}), 200
 
     return jsonify({'message': 'User not found'}), 404
 
-
+#Lembrando que a solicitação feita no POSTMAN deve ser usada os seguintes parâmetros:
+    # name: ''
+    # new_password: ''
+    #
 
 #Testado e validado através do POSTMAN ( ferramenta de desenvolvimento de API que permite testar, documentar e colaborar em seus serviços web e APIs. Ele oferece uma interface de usuário fácil de usar para criar, enviar e receber solicitações HTTP, bem como visualizar as respostas das APIs.)
 
