@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, session, flash, jsonify
+from flask import Flask, request, jsonify
 #Importando o regex e o bcrypt para encriptação
 import bcrypt
 import re

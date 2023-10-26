@@ -1,0 +1,109 @@
+<!-- podemos inicializar um servidor local para garantir que nosso front-end seja executado 
+     então, utilizando o pacote http-server conseguimos executá-lo. Podemos baixar utilizando o comando:
+                                sudo npm install -g http-server                                     -->
+<!-- após a instalação podemos ir até onde está localizado o código HTML (index.html) e executar:
+                                        http-server                                             
+     no terminal, ou seja, executar o http-server onde está localizado sua pasta index.html         -->
+<!-- Podemos também simplesmente executar o arquivo index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+</head>
+<body>
+    <h1>User Management</h1>
+
+    <h2>Add User</h2>
+    <form action="/user" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" required><br>
+        <input type="submit" value="Add User">
+    </form>
+
+    <h2>User List</h2>
+    <button onclick="getUsers()">Refresh User List</button>
+    <div id="userList"></div>
+
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <label for="loginName">Name:</label>
+        <input type="text" id="loginName" name="name" required><br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <h2>Delete User</h2>
+    <form action="/user/delete" method="POST">
+        <label for="deleteName">Name:</label>
+        <input type="text" id="deleteName" name="name" required><br>
+        <input type="submit" value="Delete User">
+    </form>
+
+    <h2>Update User</h2>
+    <button onclick="showUpdateForm()">Update User</button>
+    <div id="updateForm" style="display: none">
+        <label for="updateName">Name:</label>
+        <input type="text" id="updateName" name="name" required><br>
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="new_password"><br>
+        <label for="newRole">New Role:</label>
+        <input type="text" id="newRole" name="new_role"><br>
+        <button onclick="updateUser()">Save</button>
+    </div>
+    
+    <script>
+        function showUpdateForm() {
+            const updateForm = document.getElementById("updateForm");
+            updateForm.style.display = "block";
+        }
+    
+        function updateUser() {
+            const name = document.getElementById("updateName").value;
+            const new_password = document.getElementById("newPassword").value;
+            const new_role = document.getElementById("newRole").value;
+    
+            const data = {
+                name: name,
+                new_password: new_password,
+                new_role: new_role
+            };
+    
+            fetch("/user/update", {
+                method: "PUT",  // Alterado para PUT
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                // Atualizar a lista de usuários, se necessário
+                getUsers();
+            })
+            .catch(error => console.log(error));
+        }
+    </script>
+    
+
+    <script>
+        function getUsers() {
+            fetch("/user", { method: "GET" })
+                .then(response => response.json())
+                .then(data => {
+                    const userList = document.getElementById("userList");
+                    userList.innerHTML = "";
+                    data.users.forEach(user => {
+                        userList.innerHTML += `Name: ${user.name}, Role: ${user.role}<br>`;
+                    });
+                })
+                .catch(error => console.log(error));
+        }
+    </script>
+</body>
+</html>
