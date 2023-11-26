@@ -1,10 +1,16 @@
+# Este arquivo é somente para fins de análise, ou seja, analise de como 
+# o bcrypt faz as encriptações.
+
 import bcrypt
 
 def hash_password(password):
     # Gera um salt aleatório
+    # Salt é um valor aleatório único que é gerado para cada senha antes da
+    # aplicação do algoritmo de hash. O objetivo principal do salt é 
+    # aumentar a segurança do processo de hashing.
     salt = bcrypt.gensalt()
 
-    # Hash da senha com o salt
+    # Hash da senha com o Salt
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
 
     return hashed_password
