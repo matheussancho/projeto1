@@ -40,3 +40,21 @@ Sistema de cadastro, login e logout de usuários, utilizando o framework **Flask
 	    - O login deve conter métodos de verificação de senha e verificação das atribuições (Ex.: Admin, Manager, User).
 		
 Estamos construindo uma API de verificação de usuário e para este exercício vamos usar um array como um banco de dados. 
+
+
+# Projeto 3
+
+Terceiro projeto SEL0456
+
+O trabalho consiste nos seguintes aspectos:
+
+- Sua equipe está desenvolvendo uma aplicação de automação residencial que exige a entrada de senha para execução de determinada rotina crítica. 
+- Você ficou responsável por desenvolver um script em Python que prove o conceito de verificar se uma senha fornecida pelo usuário coincide com a senha armazenada de forma criptografada. Os requisitos para a prova de conceito são:
+
+    - A senha é fornecida pelo usuário via arquivo de texto;
+    - A senha encriptada também está salva em arquivo de texto;
+        - Sugestão: para encriptar a senha, utilizar o comando hashlib ou pacotes específicos como bcrypt, scrypt ou cryptography
+    - Utilizar dois branches com funcionalidades específicas:
+        - Branch 1: O programa deve apresentar ao usuário a senha presente no arquivo de texto e informar se é a senha correta;
+        - Branch 2: O programa deve realizar o teste de comparação apenas internamente, sem apresentar informações ao usuário.
+    - Utilizar o GitHub Actions para automatizar a verificação. Para a branch 1, usar o teste com o comando python; para o branch 2, usar o teste com o pytest.
