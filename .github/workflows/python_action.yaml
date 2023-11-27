@@ -24,8 +24,9 @@ jobs:
 
     - name: Run Python script
       run: |
-       python3 trabalho3/branch_1/
-
+       cd trabalho3/branch_1/
+       python3 script_senha_correta.py
+  
   branch_2:
     runs-on: ubuntu-latest
     steps:
@@ -44,4 +45,5 @@ jobs:
         
     - name: Run Python script
       run: |
-       python3 trabalho3/branch_2/
+       cd trabalho3/branch_2/
+       python3 script_senha_correta.py
