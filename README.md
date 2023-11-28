@@ -64,7 +64,9 @@ O trabalho consiste nos seguintes aspectos:
 Quarto projeto SEL0456
 
 Faça uma API que retorna o resultado das operações fatorial e/ou Fibonacci com entrada em JSON.
-Vamos criar uma API utilizando Flask, um framework web em Python que facilita a criação de aplicativos web.
+
+- Vamos criar uma API utilizando Flask, um framework web em Python que facilita a criação de aplicativos web.
+
     - Utilizar rotas POST com entradas em JSON;
     - O JSON pode ter 2 campos, 'fact' e 'fib';
     - Precisamos garantir que o script retorne o fatorial e/ou a sequência Fibonacci do número fornecido pelo usuário;
