@@ -58,3 +58,14 @@ O trabalho consiste nos seguintes aspectos:
         - Branch 1: O programa deve apresentar ao usuário a senha presente no arquivo de texto e informar se é a senha correta;
         - Branch 2: O programa deve realizar o teste de comparação apenas internamente, sem apresentar informações ao usuário.
     - Utilizar o GitHub Actions para automatizar a verificação. Para a branch 1, usar o teste com o comando python; para o branch 2, usar o teste com o pytest.
+
+# Projeto 4
+
+Quarto projeto SEL0456
+
+Faça uma API que retorna o resultado das operações fatorial e/ou Fibonacci com entrada em JSON.
+Vamos criar uma API utilizando Flask, um framework web em Python que facilita a criação de aplicativos web.
+    - Utilizar rotas POST com entradas em JSON;
+    - O JSON pode ter 2 campos, 'fact' e 'fib';
+    - Precisamos garantir que o script retorne o fatorial e/ou a sequência Fibonacci do número fornecido pelo usuário;
+    - Erros retornam 'unrecognized command' 
