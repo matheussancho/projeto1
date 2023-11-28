@@ -61,3 +61,9 @@ def calcular_operacoes():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+#Lembrando que para executar o servidor acima, devemos seguir a sequência:
+#Primeiramente executamos o servidor: python3 fib_fact.py 
+#Após executarmos o servidor, executamos as requests: python3 user_input.py
+#Após executarmos as requisições, basta inserirmos qual números queremos saber o fatorial e a sequência fibonacci.
